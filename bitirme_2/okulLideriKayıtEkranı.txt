@@ -1,0 +1,62 @@
+
+ <!-- Jumbotron -->
+ <div class="container py-4">
+    <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card cascading-right" style="
+          background: hsla(145, 94%, 49%, 0.55);
+          backdrop-filter: blur(30px);
+          ">
+                <div class="card-body p-5 shadow-5 text-center">
+                    <h2 class="fw-bold mb-5">Okul Lideri Kayıt Formu</h2>
+                    <form #OgretmenAddForm="ngForm">                            
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <input type="text"  class="form-control" name="teacheName" id="name"/>
+                                    <label class="form-label" for="form3Example1">Adınız</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <input type="text"   class="form-control" name="teacheSurname" id="surname" />
+                                    <label class="form-label" for="form3Example2">Soyadınız</label>
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4">
+                                <div class="form-outline">
+                                    <input type="text"  class="form-control" name="teacheName" id="name"/>
+                                    <label class="form-label" for="form3Example1">Okulunuzun Adı:</label>
+                                </div>
+                            </div>
+                        </div>                            
+                        <div class="form-outline mb-4">
+                            <input type="email"   class="form-control" name="teacheMail" id="email" />
+                            <label class="form-label" for="form3Example3">Email Adresiniz</label>
+                        </div>                            
+                        <div class="form-outline mb-4">
+                            <input type="password"   class="form-control" name="teachePassword" id="password" />
+                            <label class="form-label" for="form3Example4">Şifreniz</label>
+                        </div>                            
+                        <button type="submit"class="btn btn-primary"btn-block mb-4 > Kayıt Ol</button>
+
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>Zaten bir hesabınız mı var?</p>
+
+                            <!-- Go to button -->
+                            <button class="btn btn-primary btn-block mb-4">
+                                Giriş Yap
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <img src="https://www.timeturk.com/resim/detay/173/1735817.jpg" class="rounded-5 shadow-4"
+                style="height: 500px" />
+        </div>
+    </div>
+</div>

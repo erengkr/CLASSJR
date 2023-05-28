@@ -1,0 +1,112 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Lato", sans-serif
+  }
+
+  .w3-bar,
+  h1,
+  button {
+    font-family: "Montserrat", sans-serif
+  }
+
+  .fa-anchor,
+  .fa-coffee {
+    font-size: 200px
+  }
+</style>
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
+      href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Anasayfa</a>
+    <a href="/okul-lider-ogrenci" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Öğrenciler </a>
+    <a href="/okul-lider-ogretmen" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Öğretmenler</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Profil</a>
+    <a href="" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Çıkış Yap</a>
+  </div>
+
+<section style="background-color: #eee;">
+    <div class="container py-5">
+
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">Gültekin Kuvat</h5>
+                        <p class="text-muted mb-1">Cumhuriyet İlköğretim Okulu Müdürü</p>
+                    </div>
+                    <div class="d-flex justify-content-center mb-2">
+                      
+                    </div>
+                    <button (click)="excelExport()" class="btn btn-primary">Öğretmen Listesini İndir</button>
+                </div>
+
+            </div>
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Adı Soyadı:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">Gültekin KUVAT</p>
+                            </div>
+
+                        </div>
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">gkuvat@balikesir.edu.tr</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Okul Adı</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">Cumhuriyet İlköğretim Okulu</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"></label>
+                    <input  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    [(ngModel)]="filterText" placeholder="Öğretmenin Adını Yazınız">
+                    <div id="emailHelp" class="form-text"></div>
+
+                <h1>ÖĞRETMEN LİSTESİ</h1>
+                <!-- <div *ngFor="let b of ogretmenv1 | ogretmenFilter:filterText" class="row mb-2">
+                    <div
+                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-secondary text-white">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <h3 class="mb-0">{{" Adı Soyadı: "}}{{b.teacherName+b.teacherSurname}}</h3>
+                            <h3 class="mb-0">{{"Mail Adresi: "}}{{b.teacherMail}}</h3>
+                            
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>

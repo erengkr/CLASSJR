@@ -1,0 +1,72 @@
+<form #DersPrgoramiAddForm="ngForm" (ngSubmit)="onSubmit(DersPrgoramiAddForm)">
+    <table border="1" width="300px" align="center" cellpadding="20">
+        <tr>
+            <th colspan="10">DERS PROGRAMI</th>
+        </tr>
+        <tr>
+            <th rowspan="7">GÜNLER</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>1.Ders</th>
+            <th>2.Ders</th>
+            <th>3.Ders</th>
+            <th>4.Ders</th>
+            <th>5.Ders</th>
+            <th>6.Ders</th>
+
+        </tr>
+        <tr>
+            <th>Pazartesi</th>
+            <td><input type="text" #name="ngModel" [(ngModel)]="dersProgrami.pazartesi1" name="pazartesi1"></td>
+            <td><input type="text" #name="ngModel" [(ngModel)]="dersProgrami.pazartesi2" name="pazartesi2"></td>
+            <td><input type="text" #name="ngModel" [(ngModel)]="dersProgrami.pazartesi3" name="pazartesi3"></td>
+            <td><input type="text" #name="ngModel" [(ngModel)]="dersProgrami.pazartesi4" name="pazartesi4"></td>
+            <td><input type="text" #name="ngModel" [(ngModel)]="dersProgrami.pazartesi5" name="pazartesi5"></td>
+            <td><input type="text" #name="ngModel" [(ngModel)]="dersProgrami.pazartesi6" name="pazartesi6"></td>
+
+        </tr>
+        <tr>
+            <th>Salı</th>
+            <td><input type="text"  #name="ngModel"[(ngModel)]="dersProgrami.sali1" name="sali1"></td>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.sali2" name="sali2"></td>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.sali3" name="sali3"></td>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.sali4" name="sali4"></td>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.sali5" name="sali5"></td>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.sali6" name="sali6"></td>
+
+        </tr>
+        <tr>
+            <th>Çarşamba</th>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.carsamba1" name="carsamba1"></td>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.carsamba2" name="carsamba2"></td>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.carsamba3" name="carsamba3"></td>
+            <td><input type="text " #name="ngModel"[(ngModel)]="dersProgrami.carsamba4" name="carsamba4"></td>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.carsamba5" name="carsamba5"></td>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.carsamba6" name="carsamba6"></td>
+
+        </tr>
+        <tr>
+            <th>Perşembe</th>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.persembe1" name="persembe1" ></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.persembe2" name="persembe2"></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.persembe3" name="persembe3"></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.persembe4" name="persembe4"></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.persembe5" name="persembe5"></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.persembe6" name="persembe6"></td>
+
+        </tr>
+        <tr>
+            <th>Cuma</th>
+            <td><input type="text" #name="ngModel"[(ngModel)]="dersProgrami.cuma1" name="cuma1"></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.cuma2" name="cuma2"></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.cuma3" name="cuma3"></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.cuma4" name="cuma4"></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.cuma5" name="cuma5"></td>
+            <td><input type="text"#name="ngModel"[(ngModel)]="dersProgrami.cuma6" name="cuma6"></td>
+
+        </tr>
+    </table>
+    <button type="submit">Kaydet</button>
+</form>
+

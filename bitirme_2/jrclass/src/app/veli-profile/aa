@@ -1,0 +1,27 @@
+ <table>
+                                    <thead>
+                                      <tr>
+                                        <th>Öğrenci Adı</th>
+                                        <th>Ders Adı</th>
+                                        <th>Ders Notu</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let student of degerler">
+                                        <td>{{student.studentName}} {{student.studentSurname}}</td>
+                                        <td>
+                                          <ul>
+                                            <li *ngFor="let lesson of student.lesson">{{lesson.lessonName}}</li>
+                                          </ul>
+                                        </td>
+                                        <td>
+                                          <ul>
+                                            <li *ngFor="let lesson of student.lesson">{{lesson.note.note1}}</li>
+                                            <li *ngFor="let lesson of student.lesson">{{lesson.note.note2}}</li>
+                                            <li *ngFor="let lesson of student.lesson">{{lesson.note.note3}}</li>
+                                            <li *ngFor="let lesson of student.lesson">{{lesson.note.note4}}</li>
+                                          </ul>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>

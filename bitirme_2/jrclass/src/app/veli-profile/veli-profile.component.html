@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div style="overflow:auto;" class="w3-top">
+        <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+            <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
+                href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                    class="fa fa-bars"></i></a>
+            <a href="/ogretmen-kayit" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Profil</a>
+
+            <!-- <a href="" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Anasayfa</a> -->
+            <a href="/ogrenci-liste" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">
+            </a>
+            <a (click)="logout()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Çıkış
+                Yap</a>
+        </div>
+        <div class="container">
+            <div class="main-body">
+                <!-- /Breadcrumb -->
+                <hr>
+                <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                        class="rounded-circle" width="150">
+                                    <div class="mt-3">
+                                        <h4></h4>
+                                        <p class="text-secondary mb-1">VELİ</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Adı Soyadı:</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        {{parentName+" "+parentSurname}}
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Mail Adresi:</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        {{parentMail}}
+                                    </div>
+                                </div>   
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Veli No</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        {{parentID}}
+                                    </div>
+                                </div>                               
+                                <!-- <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">:</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                       
+                                    </div>
+                                </div> -->                                
+                                <div class="row">
+
+                                    <div class="col-sm-12 text-secondary">
+                                    </div>
+                                </div>         
+                            </div>
+                        </div>                    
+                        <!-- <select (change)="filterTable($event)">
+                          <option value="default">Dönem Seçiniz</option>
+                          <option value="2022 Bahar Dönemi">2022 Bahar Dönemi</option>
+                          <option value="2023 Bahar Dönemi">2023 Bahar Dönemi</option>
+                        </select>        -->
+                        
+                        <select (change)="filterTable($event)">
+                            <option value="default">Dönem Seçiniz</option>
+                            <option *ngFor="let semester of semesters" [value]="semester.semesterName">{{ semester.semesterName }}</option>
+                          </select>
+                         
+                          <!-- <table style="border-collapse: collapse; border: 1px solid black;">
+                            <thead>
+                               
+
+                              <tr>
+                                <th style="color:blue; border: 1px solid black; padding: 5px;">Ders Adı</th>
+                                <th style="color:blue; border: 1px solid black; padding: 5px;">ÖĞRENCİ ADI</th>
+                               
+                                <th style="color:red; border: 1px solid black; padding: 5px;">1.SINAV NOTU</th>
+                                <th style="color:aqua; border: 1px solid black; padding: 5px;">2.SINAV NOTU</th>
+                                <th style="color:green; border: 1px solid black; padding: 5px;">ÖDEV NOTU</th>
+                                <th style="color:purple; border: 1px solid black; padding: 5px;">DERSE KATILIM</th>
+                              </tr>
+                            </thead>
+
+                            <tbody *ngIf="filteredSemester">
+                                <tr *ngFor="let resItem of filteredSemester" style="border: 1px solid black;">
+                                  <td style="color: blue; border: 1px solid black; padding: 5px;">{{ resItem.lessonName }}</td>
+                                  <td style="color: blue; border: 1px solid black; padding: 5px;">
+                                    {{ findStudentName(resItem.studentID) }}
+                                  </td>
+                                  <td *ngIf="resItem.note" style="border: 1px solid black; padding: 5px;">{{ resItem.note.note1 }}</td>
+                                  <td *ngIf="!resItem.note" style="border: 1px solid black; padding: 5px;"></td>
+                                  <td *ngIf="resItem.note" style="border: 1px solid black; padding: 5px;">{{ resItem.note.note2 }}</td>
+                                  <td *ngIf="!resItem.note" style="border: 1px solid black; padding: 5px;"></td>
+                                  <td *ngIf="resItem.note" style="border: 1px solid black; padding: 5px;">{{ resItem.note.note3 }}</td>
+                                  <td *ngIf="!resItem.note" style="border: 1px solid black; padding: 5px;"></td>
+                                  <td *ngIf="resItem.note" style="border: 1px solid black; padding: 5px;">{{ resItem.note.note4 }}</td>
+                                  <td *ngIf="!resItem.note" style="border: 1px solid black; padding: 5px;"></td>
+                                </tr>
+                              </tbody>
+                              
+                          </table> -->
+                        
+                        
+
+
+
+                          <div *ngFor="let student of kisiler">
+                            <h3>Öğrenci: {{ student.studentName }} {{ student.studentSurname }}</h3>
+                            <table style="border-collapse: collapse; border: 1px solid black;">
+                              <thead>
+                                <tr>
+                                  <th style="color: blue; border: 1px solid black; padding: 5px;">Ders Adı</th>
+                                  <th style="color: red; border: 1px solid black; padding: 5px;">1. SINAV NOTU</th>
+                                  <th style="color: aqua; border: 1px solid black; padding: 5px;">2. SINAV NOTU</th>
+                                  <th style="color: green; border: 1px solid black; padding: 5px;">ÖDEV NOTU</th>
+                                  <th style="color: purple; border: 1px solid black; padding: 5px;">DERSE KATILIM</th>
+                                  <th style="color:purple; border: 1px solid black; padding: 5px;">
+                                    Dersin Ortalaması</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let lesson of student.lesson">
+                                  <td style="color: blue; border: 1px solid black; padding: 5px;">{{ lesson.lessonName }}</td>
+                                  <td *ngIf="lesson.note" style="border: 1px solid black; padding: 5px;">{{ lesson.note.note1 }}</td>
+                                  <td *ngIf="!lesson.note" style="border: 1px solid black; padding: 5px;"></td>
+                                  <td *ngIf="lesson.note" style="border: 1px solid black; padding: 5px;">{{ lesson.note.note2 }}</td>
+                                  <td *ngIf="!lesson.note" style="border: 1px solid black; padding: 5px;"></td>
+                                  <td *ngIf="lesson.note" style="border: 1px solid black; padding: 5px;">{{ lesson.note.note3 }}</td>
+                                  <td *ngIf="!lesson.note" style="border: 1px solid black; padding: 5px;"></td>
+                                  <td *ngIf="lesson.note" style="border: 1px solid black; padding: 5px;">{{ lesson.note.note4 }}</td>
+                                  <td *ngIf="!lesson.note" style="border: 1px solid black; padding: 5px;"></td>
+                                  <td *ngIf="lesson.note" style="border: 1px solid black; padding: 5px;">{{ calculateAverage(lesson.note) }}</td>
+                                  <td *ngIf="!lesson.note" style="border: 1px solid black; padding: 5px;"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          
+                          
+                         
+
+
+
+                         
+                            
+                          
+                          
+                    </div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

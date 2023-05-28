@@ -1,0 +1,356 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Lato", sans-serif
+  }
+
+  .w3-bar,
+  h1,
+  button {
+    font-family: "Montserrat", sans-serif
+  }
+
+  .fa-anchor,
+  .fa-coffee {
+    font-size: 200px
+  }
+</style>
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
+      href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Anasayfa</a>
+    <a href="/okul-lider-ogrenci" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Öğrenciler </a>
+    
+   
+    <a (click)="logout()" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Çıkış Yap</a>
+  </div>
+</div>
+
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-3">
+     
+        <div  style="max-width:100% ;" class="row">
+          <button (click)="formChange()"   class="btn btn-warning d-flex justify-content-center">{{changeForm? "Ders Kayıt" :"Öğrenci Kayıt"}}</button>
+
+        </div>     
+        <div class="row mt-2 mb-2" >
+          <h1 style="text-align: center;">{{changeForm? "Öğrenci Kayıt" :"Ders Kayıt"}}</h1>
+        </div>
+        <form class="w3-red" id="gundogdu" *ngIf="changeForm" [formGroup]="studentSignupForm">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input id="yusuf" type="text" formControlName="studentName" class="form-control" />
+                <label id="emre" class="form-label" for="form3Example1">Adı</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input id="yusuf" type="text" formControlName="studentSurname" class="form-control" />
+                <label id="emre" class="form-label" for="form3Example2">Soyadı</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input id="yusuf" type="text" formControlName="studentClass" class="form-control" name="studentClass" />
+                <label id="emre" class="form-label" for="form3Example1">Sınıf/Şube</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input id="yusuf" type="text" formControlName="studentNo" class="form-control" />
+                <label id="emre" class="form-label" for="form3Example2">Okul No</label>
+              </div>
+            </div>
+          </div>
+          
+       
+
+          <!-- <div class="row">
+            <div class="form-outline mb-4">
+              <input id="yusuf" type="text" formControlName="studentClass" class="form-control" name="studentClass"
+                id="studentClass" />
+              <label id="emre" class="form-label" for="form3Example3">Sınıf/Şube</label>
+            </div>
+  
+            <div class="form-outline mb-4">
+              <input id="yusuf" type="text" formControlName="studentNo" class="form-control" name="studentNo" id="studentNo" />
+              <label id="emre" class="form-label" for="form3Example3">Okul Numarası</label>
+            </div>
+          </div> -->
+         
+          <div class="form-outline mb-4">
+            <input type="number" formControlName="parentID" class="form-control" name="parentID" id="parentID" />
+            <label class="form-label" for="form3Example3">Veli Bilgisi</label>
+          </div>
+          <div class="form-outline mb-4">
+            <input type="number" formControlName="schoolLeaderID" class="form-control" name="schoolLeaderID"
+              id="schoolLeaderID" />
+            <label class="form-label" for="form3Example3">Müdür Bilgisi</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input formControlName="studentPassword" class="form-control" name="studentPassword"
+              id="studentPassword" />
+            <label class="form-label" for="form3Example4">TC Kimlik Numarası</label>
+          </div>
+          <div class="row" *ngIf="loadingIconShow">
+            <span class="spinner-border" id="yüklemeikon" role="status"></span>
+            <span class="justify-content-center" id="yüklemetext">Kontrol Ediliyor...</span>
+        </div>
+
+          <button (click)="onSignup()" type="submit" class="btn btn-warning" btn-block mb-4> Kaydet</button>
+
+
+        </form>
+
+
+
+
+
+
+
+
+        <form id="form2" class="w3-red" *ngIf="!changeForm" [formGroup]="registerLessonForm">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input type="text" formControlName="lessonName" class="form-control" />
+                <label class="form-label" for="form3Example1">Dersin Adı</label>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input type="number" formControlName="studentID" class="form-control" />
+                <label class="form-label" for="form3Example2">Öğrenci Bilgisi</label>
+              </div>
+            </div>
+          </div>
+
+        
+
+      
+          <div class="form-outline mb-4">
+            <input type="number" formControlName="teacherID" class="form-control" name="teacherID" id="teacherID" />
+            <label class="form-label" for="form3Example3">Öğretmen Bilgisi</label>
+          </div>
+       
+
+        
+         
+
+          <button  (click)="onRegisterLesson()" type="submit" class="btn btn-warning" btn-block mb-4> Kaydet</button>
+          
+
+
+        </form>
+
+      </div>
+         <!-- <div class="card mb-1">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3">{{fullName}}</h5>
+            <p class="text-muted mb-1">Cumhuriyet İlköğretim Okulu Müdürü</p>
+            <a href="/lesson-register">Ders Kaydı</a>
+          </div>
+          <div class="d-flex justify-content-center mb-2">
+            <input type="file" class="btn btn-primary" (change)="fileExcelUpload($event)" multiple="false"
+              accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+
+          </div>
+          <div class="button" (click)="excelExport()">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Öğrenci Listesini İndir
+          </div>
+        </div> -->
+
+
+
+      <div class="col-lg-9">
+        <div class="card mb-1">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Adı Soyadı:</p>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-muted mb-0">{{schoolLeaderName+" "+schoolLeaderSurname}}</p>
+              </div>
+
+            </div>
+
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Mail Adresi</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{schoolLeaderMail}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Müdür No</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0">{{schoolLeaderID}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div  class="col-sm-3">
+                <button class="btn btn-warning" (click)="excelExport()">Öğrenci Listesini İndir</button>
+              </div>
+              <div class="col-sm-6">
+                <form [formGroup]="updateSemesterForm">
+                  <input style="max-width: 175px; margin-left: 100px;" formControlName="semesterName" class="form-control" type="text">
+                  <button style="max-width: 300px; margin-left:105px" class="btn btn-warning" (click)="updateClass()">Dönem Güncelle</button>
+                </form>
+               
+              </div>
+              <div class="col-sm-3">
+                <button class="btn btn-warning" (click)="excelExport2()">Öğretmen Listesini İndir</button>
+              </div>
+            </div>
+            <hr>
+          
+        </div>
+
+
+
+        <div class="row gutters-sm">
+          <div class="col-sm-6 mb-3">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="mb-1">
+                  <label for="exampleInputEmail1" class="form-label"></label>
+                  <h1 style="text-align: center;">ÖĞRENCİ LİSTESİ</h1>
+                  <input style="max-width: 90%; margin-left: auto; margin-bottom:10px; margin-right: auto;" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    [(ngModel)]="filterTextStudent" placeholder="Öğrencinin Adını Yazınız">
+                  <div stlye="margin-top:10px;" class="buttons">         
+
+
+                      <div class="row container">
+
+                        <div class="col-lg-3 col-md-3 col-sm-4">
+                          <button class=" btn btn-success me-1 mt-1"  (click)="filterStudent('')">TÜMÜ</button>
+                        </div>
+                        <div class="col-lg-1 col-md-3 col-sm-4">
+                          <button class=" btn btn-danger me-1 mt-1"  (click)="filterStudent('1/A')">1/A</button>
+                        </div>
+                         <div class="col-lg-1 col-md-3 col-sm-4">
+                          <button class=" btn btn-danger me-1 mt-1"  (click)="filterStudent('1/B')">1/B</button>
+                        </div>
+                         <div class="col-lg-2 col-md-3 col-sm-4">
+                          <button class=" btn btn-danger me-1 mt-1"  (click)="filterStudent('1/C')">1/C</button>
+                        </div>
+                         <div class="col-lg-1 col-md-3 col-sm-4">
+                          <button class=" btn btn-secondary me-1 mt-1"  (click)="filterStudent('2/A')">2/A</button>
+                        </div> 
+                        <div class="col-lg-1 col-md-3 col-sm-4">
+                          <button class=" btn btn-secondary me-1 mt-1"  (click)="filterStudent('2/B')">2/B</button>
+                        </div> 
+                        <div class="col-lg-3 col-md-3 col-sm-4">
+                          <button class=" btn btn-secondary me-1 mt-1"  (click)="filterStudent('2/C')">2/C</button>
+                        </div> 
+                        <div class="col-lg-1 col-md-3 col-sm-4">
+                          <button class=" btn btn-info me-1 mt-1"  (click)="filterStudent('3/A')">3/A</button>
+                        </div> <div class="col-lg-1 col-md-3 col-sm-4">
+                          <button class=" btn btn-info me-1 mt-1"  (click)="filterStudent('3/B')">3/B</button>
+                        </div> <div class="col-lg-2 col-md-3 col-sm-4">
+                          <button class=" btn btn-info me-1 mt-1"  (click)="filterStudent('3/C')">3/C</button>
+                        </div> <div class="col-lg-1 col-md-3 col-sm-4">
+                          <button class=" btn btn-dark me-1 mt-1"  (click)="filterStudent('4/A')">4/A</button>
+                        </div> 
+                        <div class="col-lg-1 col-md-3 col-sm-4">
+                          <button class=" btn btn-dark me-1 mt-1"  (click)="filterStudent('4/B')">4/B</button>
+                        </div>
+                         <div class="col-lg-1 col-md-3 col-sm-4">
+                          <button class=" btn btn-dark me-1 mt-1"  (click)="filterStudent('4/C')">4/C</button>
+                        </div>
+                      </div>
+                  
+                   
+                      
+
+
+
+
+
+
+
+
+
+                    <div id="liste"  *ngFor="let b of filteredStudents | ogrenciFilter:filterTextStudent " class="row mb-2 ">
+                      <div
+                        class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative  text-white">
+                        <div class="col p-4 d-flex flex-column position-static">
+                          <h3 class="mb-0" (click)="populateForm(b)">{{" Adı Soyadı: "}}{{b.studentName}}{{"
+                            "}}{{b.studentSurname}}</h3>
+                          <h3 class="mb-0">{{"Sınıf/Şube: "}}{{b.studentClass}}</h3>
+                          <h3 class="mb-0">{{"Okul Numarası: "}}{{b.studentNo}}</h3>
+                          <h3 class="mb-0">{{"Öğrenci Kodu : "}}{{b.studentID}}</h3>
+
+
+                          <button class="btn btn-warning"  (click)="onDelete(b.studentID)">Öğrenciyi Sil</button>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 mb-3">
+            <div class="card h-100">
+              <div class="card-body">
+                
+                <h1 style="text-align: center;">ÖĞRETMEN LİSTESİ</h1>
+                <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  [(ngModel)]="filterTextTeacher" placeholder="Öğretmenin Adını Yazınız">
+
+                <div style="margin-top: 10px;" id="liste2" *ngFor="let a of filteredTeachers | ogretmenFilter:filterTextTeacher " class="row mb-2">
+                  <div
+                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative text-white">
+                    <div class="col p-4 d-flex flex-column position-static">
+                      <h3 class="mb-0">{{" Adı Soyadı: "}}{{a.teacherName}}{{"
+                        "}}{{a.teacherSurname}}</h3>
+                      <h3 class="mb-0">{{"Mail Adresi: "}}{{a.teacherMail}}</h3>
+                      <h3 class="mb-0">{{"Öğretmen Kodu: "}}{{a.teacherID}}</h3>
+
+                      <button class="btn btn-warning"  (click)="onDelete(a.teacherID)">Öğretmeni Sil</button>
+                    </div>
+                  </div>
+                </div>
+                <!-- BURAYA ÖĞRETMENLERİ LİSTELE ALOO -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:100px}
+    </style>
+  </head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);"
+     onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Anasayfa</a>
+    <a href="/ogrenci-giris" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Öğrenci </a>
+    <a href="/ogretmen-kayit" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Öğretmen</a>
+    <a href="/liderkayit" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Okul Yöneticisi</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Veli</a>
+  </div>
+
+
+  <section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+          background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+          height: 300px;
+          "></div>
+    <!-- Background image -->
+  
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          margin-top: -100px;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);
+          ">
+      <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-5">Kayıt Ol</h2>
+
+
+
+
+
+            <form [formGroup]="signupForm" >
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example1">Ad</label>
+                    <input formControlName="parentName" type="text"  class="form-control" />
+                   <small *ngIf="signupForm.controls['parentName'].dirty && signupForm.hasError('required','parentName')" class="text-danger">Ad alanı boş bırakılamaz</small>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example2">Soyad</label>
+                    <input formControlName="parentSurname" type="text"  class="form-control" />
+                   <small *ngIf="signupForm.controls['parentSurname'].dirty && signupForm.hasError('required','parentSurname')" class="text-danger">Soyad Alanı Boş Bırakılamaz</small>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Email adresi</label>
+                <input formControlName="parentMail" type="email"  class="form-control" />
+               <small *ngIf="signupForm.controls['parentMail'].dirty && signupForm.hasError('required','parentMail')" class="text-danger"> Email Alanı Boş Bırakılamaz</small>
+              </div>
+  
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example4">Şifre</label>
+                <input formControlName="parentPassword" type="password" class="form-control" />
+               <small *ngIf="signupForm.controls['parentPassword'].dirty && signupForm.hasError('required','parentPassword')" class="text-danger"> Şifre Alanı Boş Bırakılamaz</small>
+                
+              </div>               
+  
+              <!-- Submit button -->
+              <button (click)="onSignup()"  type="submit" class="btn btn-primary btn-block mb-4">
+                Kayıt Ol
+              </button>            
+
+                <div class="text-center">
+                    <p>
+                    Zaten bir hesabın var mı? <a href="/veli-login">Giriş Yap</a>
+                    </p>
+                    </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
